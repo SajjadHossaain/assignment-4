@@ -39,16 +39,40 @@
         <hr class="my-[30px] text-[#E6E7E9]">
     </header>
     <main class="container mx-auto">
+        <div class="flex justify-between">
+            <h1 class="font-semibold text-xl text-[#111827]">Available Jobs</h1>
+            <h4 class="text-[16px] text-[#323B49]"><span>8</span> jobs</h4>
+        </div>
+        <div class="my-8">
+            <button class="btn btn-primary w-20">All</button>
+            <button class="btn w-20 text-[#64748B] mx-2">Interview</button>
+            <button class="btn w-20 text-[#64748B]">Rejected</button>
+        </div>
         <section>
-            <div class="flex justify-between">
-                <h1 class="font-semibold text-xl text-[#111827]">Available Jobs</h1>
-                <h4 class="text-[16px] text-[#323B49]"><span>8</span> jobs</h4>
+            <div class="card-container">
+                <!-- card-1 -->
+                <div class="p-6 shadow space-y-5 ">
+                    <div class="flex gap-4 justify-between items-center">
+                        <div class="w-full space-y-1">
+                            <h1 class="font-semibold text-xl text-[#002C5C]">Mobile First Corp</h1>
+                            <p>React Native Developer</p>
+                        </div>
+                        <div><i class="fa-regular fa-trash-can"></i></div>
+                    </div>
+                    <p>Remote   •   Full-time   •   $130,000 - $175,000</p>
+                    <div class="space-y-2">
+                        <button class="btn">Not Applied</button>
+                        <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="btn btn-outline btn-error">REJECTED</button>
+                    </div>
+                </div>
             </div>
-            <div class="my-8">
-                <button class="btn btn-primary w-20">All</button>
-                <button class="btn w-20 text-[#64748B] mx-2">Interview</button>
-                <button class="btn w-20 text-[#64748B]">Rejected</button>
-            </div>
+        </section>
+        <section>
+            
         </section>
     </main>
 </body>
