@@ -46,11 +46,11 @@
             <h4 class="text-[16px] text-[#323B49]"><span>8</span> jobs</h4>
         </div>
         <div class="bg-white my-8">
-            <button class="btn btn-primary w-20">All</button>
-            <button class="btn w-20 text-[#64748B] mx-2">Interview</button>
-            <button class="btn w-20 text-[#64748B]">Rejected</button>
+            <button onclick="changeBg('all-btn');showOnly('no-job-section')" id="all-btn" class="btn btn-primary w-20">All</button>
+            <button onclick="changeBg('interview-btn');showOnly('no-job-section')" id="interview-btn" class="btn w-20 text-[#64748B] mx-2">Interview</button>
+            <button onclick="changeBg('reject-btn');showOnly('no-job-section')" id="reject-btn" class="btn w-20 text-[#64748B]">Rejected</button>
         </div>
-        <section>
+        <section id="job-section">
             <div class="job-card-container">
                 <!-- card-1 -->
                 <div class="bg-white p-6 shadow space-y-5 ">
@@ -253,7 +253,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="no-job-section" class="hidden">
             <div class="bg-white flex flex-col gap-5 items-center py-[110px]">
                 <div>
                     <img src="assets/jobs.png" alt="">
@@ -265,6 +265,7 @@
             </div>
         </section>
     </main>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
