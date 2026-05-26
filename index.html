@@ -25,17 +25,17 @@
     <header class="bg-white container mx-auto my-[60px] px-10">
         <h1 class="font-bold text-[#002C5C] text-3xl">Job Application Tracker</h1>
         <div class="card-container grid sm:grid-cols-3 gap-4">
-            <div class="card p-5 shadow">
+            <div class=" p-5 shadow">
                 <p class="font-medium text-[#323B49]">Total</p>
-                <h2 class="font-bold  text-2xl">8</h2>
+                <h2 class="font-bold  text-2xl" id="total-count">0</h2>
             </div>
-            <div class="card p-5 shadow">
+            <div class=" p-5 shadow">
                 <p class="font-medium text-[#323B49]">Interview</p>
-                <h2 class="font-bold text-[#10B981] text-2xl">0</h2>
+                <h2 class="font-bold text-[#10B981] text-2xl" id="interview-count">0</h2>
             </div>
-            <div class="card p-5 shadow">
+            <div class="p-5 shadow">
                 <p class="font-medium text-[#323B49]">Rejected</p>
-                <h2 class="font-bold text-[#EF4444] text-2xl">0</h2>
+                <h2 class="font-bold text-[#EF4444] text-2xl" id="rejected-count">0</h2>
             </div>
         </div>
         <hr class="my-[30px] text-[#E6E7E9]">
@@ -46,214 +46,274 @@
             <h4 class="text-[16px] text-[#323B49]"><span>8</span> jobs</h4>
         </div>
         <div class="bg-white my-8">
-            <button onclick="changeBg('all-btn');showOnly('no-job-section')" id="all-btn" class="btn btn-primary w-20">All</button>
-            <button onclick="changeBg('interview-btn');showOnly('no-job-section')" id="interview-btn" class="btn w-20 text-[#64748B] mx-2">Interview</button>
-            <button onclick="changeBg('reject-btn');showOnly('no-job-section')" id="reject-btn" class="btn w-20 text-[#64748B]">Rejected</button>
+            <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn"
+                class="btn btn-primary w-20">All</button>
+            <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn"
+                class="btn w-20 text-[#64748B] mx-2">Interview</button>
+            <button onclick="toggleStyle('reject-filter-btn')" id="reject-filter-btn"
+                class="btn w-20 text-[#64748B]">Rejected</button>
         </div>
-        <section id="job-section">
-            <div class="job-card-container">
-                <!-- card-1 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+        <section id="all-cards">
+            <!-- card-1 -->
+            <div class="flex justify-between p-6">
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">Mobile First Corp</h1>
-                            <p>React Native Developer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">Mobile First Corp</h1>
+                            <p class="job-type">React Native Developer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Remote
+                    <p class="job-info">Remote
                         •
                         Full-time
                         •
                         $130,000 - $175,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Build cross-platform mobile applications using React Native. Work on products used by
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Build cross-platform mobile applications using React Native. Work on
+                            products used by
                             millions of users worldwide.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
+
                 </div>
-                <!-- card-2 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-2 -->
+            <div class="flex justify-between p-6">
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">WebFlow Agency</h1>
-                            <p>Web Designer & Developer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">WebFlow Agency</h1>
+                            <p class="job-type">Web Designer & Developer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Los Angeles, CA
+                    <p class="job-info">Los Angeles, CA
                         •
                         Part-time
                         •
                         $80,000 - $120,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Create stunning web experiences for high-profile clients. Must have portfolio and experience
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Create stunning web experiences for high-profile clients. Must have
+                            portfolio and
+                            experience
                             with modern web design
                             trends.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-3 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-3 -->
+            <div class="flex justify-between p-6">
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">DataViz Solutions</h1>
-                            <p>Data Visualization Specialist</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">DataViz Solutions</h1>
+                            <p class="job-type">Data Visualization Specialist</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Boston, MA
+                    <p class="job-info">Boston, MA
                         •
                         Full-time
                         •
                         $125,000 - $165,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Transform complex data into compelling visualizations. Required skills: D3.js, React, and
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Transform complex data into compelling visualizations. Required skills:
+                            D3.js, React, and
                             strong analytical thinking.
                         </p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-4 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-4 -->
+            <div class="flex justify-between p-6">
+
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">CloudFirst Inc</h1>
-                            <p>Backend Developer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">CloudFirst Inc</h1>
+                            <p class="job-type">Backend Developer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Seattle, WA
+                    <p class="job-info">Seattle, WA
                         •
                         Full-time
                         •
                         $140,000 - $190,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Design and maintain scalable backend systems using Python and AWS. Work
+                            with modern
+                            DevOps
                             practices and cloud
                             infrastructure.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-5 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-5 -->
+            <div class="flex justify-between p-6">
+
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">Innovation Labs</h1>
-                            <p>UI/UX Engineer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">Innovation Labs</h1>
+                            <p class="job-type">UI/UX Engineer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Austin, TX
+                    <p class="job-info">Austin, TX
                         •
                         Full-time
                         •
                         $110,000 - $150,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Create beautiful and functional user interfaces for our suite of products. Strong design
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Create beautiful and functional user interfaces for our suite of
+                            products. Strong design
                             skills and frontend development
                             expertise required.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-6 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-6 -->
+            <div class="flex justify-between p-6">
+
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">MegaCorp Solutions</h1>
-                            <p>JavaScript Developer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">MegaCorp Solutions</h1>
+                            <p class="job-type">JavaScript Developer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>New York, NY
+                    <p class="job-info">New York, NY
                         •
                         Full-time
                         •
                         $130,000 - $170,00</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Build enterprise applications with JavaScript and modern frameworks. We offer competitive
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Build enterprise applications with JavaScript and modern frameworks. We
+                            offer competitive
                             compensation, health
                             insurance, and professional development opportunities.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-7 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-7 -->
+            <div class="flex justify-between p-6">
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">StartupXYZ</h1>
-                            <p>Full Stack Engineer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">StartupXYZ</h1>
+                            <p class="job-type">Full Stack Engineer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>Remote
+                    <p class="job-info">Remote
                         •
                         Full-time
                         •
                         $120,000 - $160,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>Join our fast-growing startup and work on our core platform. Experience with Node.js and
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">Join our fast-growing startup and work on our core platform. Experience
+                            with Node.js and
                             React required. Great benefits
                             and equity package included.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
                 </div>
-                <!-- card-8 -->
-                <div class="bg-white p-6 shadow space-y-5 ">
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+
+            <!-- card-8 -->
+            <div class="flex justify-between p-6">
+                <div class="bg-white space-y-5 ">
                     <div class="flex gap-4 justify-between items-center">
                         <div class="w-full space-y-1">
-                            <h1 class="font-semibold text-xl text-[#002C5C]">TechCorp Industries</h1>
-                            <p>Senior Frontend Developer</p>
+                            <h1 class="job-name font-semibold text-xl text-[#002C5C]">TechCorp Industries</h1>
+                            <p class="job-type">Senior Frontend Developer</p>
                         </div>
-                        <div><i class="fa-regular fa-trash-can"></i></div>
                     </div>
-                    <p>San Francisco, CA
+                    <p class="job-info">San Francisco, CA
                         •
                         Full-time
                         •
                         $130,000 - $175,000</p>
                     <div class="space-y-2">
-                        <button class="btn">Not Applied</button>
-                        <p>We are looking for an experienced Frontend Developer to build scalable web applications using
+                        <p class="job-status btn">Not Applied</p>
+                        <p class="job-details">We are looking for an experienced Frontend Developer to build scalable
+                            web applications
+                            using
                             React and TypeScript. You
                             will work with a talented team on cutting-edge projects.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="btn btn-outline btn-success">INTERVIEW</button>
-                        <button class="btn btn-outline btn-error">REJECTED</button>
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
                     </div>
+                </div>
+                <div class="bg-white">
+                    <i class="fa-regular fa-trash-can"></i>
                 </div>
             </div>
         </section>
-        <section id="no-job-section" class="hidden">
+
+        <section id="filtered-section" class="hidden">
+
+        </section>
+
+        <section id="empty-section" class="hidden">
             <div class="bg-white flex flex-col gap-5 items-center py-[110px]">
                 <div>
                     <img src="assets/jobs.png" alt="">
