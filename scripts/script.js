@@ -50,6 +50,11 @@ function toggleStyle(id) {
   } else if (id == "all-filter-btn") {
     allCards.classList.remove("hidden");
     filterSection.classList.add("hidden");
+      if (allCards.children.length === 0) {
+        emptySection.classList.remove("hidden");
+      } else {
+        emptySection.classList.add("hidden");
+      }
   }
 }
 
